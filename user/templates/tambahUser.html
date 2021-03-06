@@ -1,33 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <br>
-	<h1 class="h2 display">{{judul}}</h1>
+  <h1 class="h2 display">{{judul}}</h1>
 <br>
 <div class="row">
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header d-flex align-items-center">
-          <h2 class="h4 display display"><button class="btn btn-primary"><i class="fa fa-save"></i> Simpan Data</button> <button class="btn btn-grey"><i class="fa fa-trash"></i> Reset</button></h2>
+          <form class="form-horizontal" action="{%url 'tambahUser'%}" method="post" enctype="multipart/form-data">
+          <h2 class="h4 display display">
+            <button class="btn btn-primary"><i class="fa fa-save"></i> Simpan Data</button>
+            <button class="btn btn-grey" type="reset"><i class="fa fa-trash"></i> Reset</button>
+          </h2>
         </div>
         <div class="card-body">
-          <form class="form-horizontal">
-            <div class="form-group row">
-              <label class="col-sm-2">Email</label>
-              <div class="col-sm-10">
-                <input id="inputHorizontalSuccess" type="email" placeholder="Email Address" class="form-control form-control-success"><small class="form-text">Example help text that remains unchanged.</small>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-2">Password</label>
-              <div class="col-sm-10">
-                <input id="inputHorizontalWarning" type="password" placeholder="Pasword" class="form-control form-control-warning"><small class="form-text">Example help text that remains unchanged.</small>
-              </div>
-            </div>
-            <div class="form-group row">       
-              <div class="col-sm-10 offset-sm-2">
-                <input type="submit" value="Signin" class="btn btn-primary">
-              </div>
-            </div>
+            {%csrf_token%}
+            <table class="table">
+              {{form.as_table}}
+            </table>
           </form>
         </div>
       </div>

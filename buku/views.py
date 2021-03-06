@@ -51,8 +51,8 @@ def edit(request, id_buku):
 
 
 def hapus(request, id_buku):
-	buku = Buku.objects.filter(id=id_buku)
-	buku.delete()
+	data = Buku.objects.filter(id=id_buku)
+	data.delete()
 	messages.success(request, 'Data Berhasil Dihapus')
 
 	return redirect('tampilBuku')
