@@ -19,3 +19,6 @@ class User(models.Model):
 	kelas = models.ForeignKey(KodeKelas, on_delete=models.CASCADE, null=False)
 	email = models.CharField(max_length=50)
 	no_telp = models.CharField(max_length=20)
+	
+	def __str__(self):
+		return self.nama
