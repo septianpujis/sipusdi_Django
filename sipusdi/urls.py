@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', base.index, name='index' ),
     path('login/', LoginView.as_view(), name='login' ),
-    path('logout/', LogoutView.as_view(next_page='masuk'), name='logout' ),
+    path('logout/', LogoutView.as_view(next_page='index'), name='logout' ),
 
     path('buku/', buku.index , name='tampilBuku' ),
     path('buku/tambah/', buku.tambah, name='tambahBuku' ),
@@ -43,6 +43,7 @@ urlpatterns = [
     path('transaksi/tambah/', transaksi.tambah, name='tambahTrans' ),
     path('transaksi/edit/<int:id_trans>', transaksi.edit, name='editTrans' ),
     path('transaksi/hapus/<int:id_trans>', transaksi.hapus, name='hapusTrans' ),
-
-
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

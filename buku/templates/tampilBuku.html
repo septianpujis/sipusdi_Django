@@ -3,52 +3,95 @@
 <br>
 	<h1 class="h2 display">{{judul}}</h1>
 <br>
+
+{%if messages%}
+  {% for message in messages%}
+    <div class="alert alert-success">
+     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{message}}</strong>
+  </div>
+  {%endfor%}
+{%endif%}
+
 <div class="row">
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header d-flex align-items-center">
-          <h2 class="h4 display display"><button class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</button></h2>
+          <h2 class="h4 display display"><a href="{%url 'tambahBuku'%}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</a></h2>
         </div>
         <div class="card-body">
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-                <th>Aksi</th>
+                <th width="10%">Cover</th>
+                <th width="30%">Judul</th>
+                <th width="20%">Penulis</th>
+                <th width="15%">Genre</th>
+                <th width="15%">Aksi</th>
               </tr>
             </thead>
+            {% for row in buku %}
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th>
+                  {%if row.cover%}
+                  <img src="{{row.cover.url}}" alt="cover_id:{{row.id}}" width="90" height="120">
+                  {%endif%}
+                </th>
+                <td>{{row.judul}}</td>
+                <td>{{row.penulis}}</td>
+                <td>{{row.genre}}</td>
                 <td>
-                  <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                  <!-- Modal-->
-                  <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
-                    <div role="document" class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 id="exampleModalLabel" class="modal-title">Hapus Data Buku?</h5>
-                          <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                  <button type="button" data-toggle="modal" data-target="#detail-{{row.id}}" class="btn btn-primary"><i class="fa fa-info"></i></button>
+                  <a href="{%url 'editBuku' row.id%}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                  <button type="button" data-toggle="modal" data-target="#hapus-{{row.id}}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                  <!-- Modal Hapus -->
+              <div id="hapus-{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
+                <div role="document" class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 id="exampleModalLabel" class="modal-title">Hapus Data Pengguna?</h5>
+                      <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Kamu yakin ingin menghapus data ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" data-dismiss="modal" class="btn btn-secondary">Batal</button>
+                      <a type="button" class="btn btn-danger" href="{%url 'hapusBuku' row.id %}">Hapus data {{row.id}}</a>{#   GANTI DATANYA #}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal lihat -->
+              <div id="detail-{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
+                <div role="document" class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 id="exampleModalLabel" class="modal-title">Data Buku</h5>
+                      <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-7">
+                          <strong>Tanggal Ditambahkan</strong> : <br><span>{{row.tanggal}}</span><br>
+                          <strong>Judul :</strong><br><span>{{row.judul}}</span><br>
+                          <strong>Penulis :</strong><br><span>{{row.penulis}}</span><br>
+                          <strong>Penerbit :</strong><br><span>{{row.penerbit}}</span><br>
+                          <strong>Tahun Terbit :</strong><br><span>{{row.tahun}}</span><br>
+                          <strong>Genre :</strong><br><span>{{row.genre}}</span><br>
+                          <strong>Sinopsis :</strong><br><span>{{row.sinopsis}}</span><br>
                         </div>
-                        <div class="modal-body">
-                          <p>Kamu yakin ingin menghapus data ini?</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" data-dismiss="modal" class="btn btn-secondary">Batal</button>
-                          <button type="button" class="btn btn-primary" href="{%url 'hapusBuku' 2 %}">Hapus</button>{#   GANTI DATANYA #}
-                        </div>
+                        <div class="col-5"><p align="center"><img src="#" alt="Gambar Cover tidak ditemukan" width="240" height="360"></p></div>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
                 </td>
               </tr>
             </tbody>
+            {%endfor%}
           </table>
         </div>
       </div>

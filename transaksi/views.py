@@ -16,15 +16,16 @@ def tambah(request):
 	return render(request, 'tambahTrans.html', var)
 
 
-def edit(request, id):
+def edit(request, id_trans):
 	var ={
 		'judul' : "Sunting Data Peminjaman",
 	}
 	return render(request, 'editTrans.html', var)
 
 
-def hapus(request, id):
+def hapus(request, id_trans):
 	var ={
+		'id_trans':id_trans,
 		'judul' : "Hapus Data Peminjaman",
 	}
-	return redirect('tampilTrans.html', var)
+	return redirect('tampilTrans')
