@@ -1,0 +1,28 @@
+{%load static%}
+<nav class="side-navbar">
+  <div class="side-navbar-wrapper">
+    <div class="sidenav-header d-flex align-items-center justify-content-center">
+      <div class="sidenav-header-inner text-center"><img src="{%static 'img/logo.png'%}" alt="logo utama" class="img-fluid rounded-circle">
+        <h2 class="h5 text-uppercase">Sistem</h2><strong class="text-uppercase">Perpustakaan</strong>
+      </div>
+      <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>S</strong><strong class="text-primary">P</strong></a></div>
+    </div>
+    <div class="main-menu">
+      <ul id="side-main-menu" class="side-menu list-unstyled">                  
+        <li {% if request.path == "/" %} class="active" {%endif%}><a href="{%url 'index'%}"> <i class="icon-home"></i><span>Dashboard</span></a></li>
+        <li {% if request.path == "/buku/"%} class="active" {%endif%} > <a href="{%url 'tampilBuku'%}"><i class="fa fa-book"></i><span>Buku</span></a></li>
+        <li {% if request.path == "/user/"%} class="active" {%endif%} > <a href="{%url 'tampilUser'%}"><i class="fa fa-user-o"></i><span>Pengguna</span></a></li>
+        <li {% if request.path == "/transaksi/"%} class="active" {%endif%} > <a href="{%url 'tampilTrans'%}"> <i class="fa fa-file-text-o"> </i><span>Transaksi</span></a></li>
+        <li> <a href="#pages-nav-list" data-toggle="collapse" aria-expanded="false"><i class="icon-interface-windows"></i><span>Laporan</span><div class="arrow pull-right"><i class="fa fa-angle-down"></i></div></a>
+              <ul id="pages-nav-list" class="collapse list-unstyled">
+                <li> <a href="#">Laporan Buku</a></li>
+                <li> <a href="#">laporan Pengguna</a></li>
+                <li> <a href="#">Laporan Transaksi</a></li>
+              </ul>
+            </li>
+        <li> <a href="#"> <i class="icon-mail"></i><span>Tentang Kami</span></a></li>
+        <li> <a href="#"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
