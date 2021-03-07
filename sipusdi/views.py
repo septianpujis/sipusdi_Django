@@ -5,10 +5,15 @@ from user.models import *
 from django.contrib import messages
 
 def index(request):
-	var ={
-		'judul' : "Halaman Utama",
-	}
-	return render(request, 'index.html', var)
+	try:
+		request.session['nis']
+	except KeyError:
+		return redirect('login')
+	else:
+		var ={
+			'judul' : "Halaman Utama",
+		}
+		return render(request, 'index.html', var)
 
 def login(request):
 	if request.POST:
@@ -17,6 +22,7 @@ def login(request):
 
 		if data:
 			for row in data:
+				request.session.set_expiry(9000)
 				request.session['nis'] = row['nis']
 				request.session['nama'] = row['nama']
 				request.session['no_telp'] = row['no_telp']

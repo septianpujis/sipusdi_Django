@@ -43,7 +43,6 @@ urlpatterns = [
     path('transaksi/tambah/', transaksi.tambah, name='tambahTrans' ),
     path('transaksi/edit/<int:id_trans>', transaksi.edit, name='editTrans' ),
     path('transaksi/hapus/<int:id_trans>', transaksi.hapus, name='hapusTrans' ),
-    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
