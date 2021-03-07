@@ -11,6 +11,7 @@ Bootstrapious Dashboard Template 1.1
 *     GENERAL
 * ==========================================================
 */
+{%load static%}
 .text-bold {
   font-weight: 700;
 }
@@ -1442,7 +1443,7 @@ section.forms .input-group-btn .dropdown-menu a {
 */
 .login-page,
 .register-page {
-  background: #f5f5f5;
+  background-image: url("../img/bg.jpg");
   min-height: auto;
   padding-bottom: 0;
 }

@@ -15,7 +15,7 @@ def index(request):
 
 def tambah(request):
 	if request.POST:
-		form = FormUser(request.POST, request.FILES)
+		form = FormUser(request.POST)
 		if form.is_valid():
 			form.save()
 			messages.success(request, 'Data Berhasil Ditambahkan')

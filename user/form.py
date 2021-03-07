@@ -18,3 +18,12 @@ class FormUser(ModelForm):
 			'email' : forms.EmailInput({'class':'form-control'}),
 			'no_telp' : forms.NumberInput({'class':'form-control', 'minlength':'10'}),
 		}
+
+class FormLogin(ModelForm):
+	class Meta:
+		model = User
+		fields = ['nis','password']
+		widgets ={
+			'nis' : forms.NumberInput({'min':'1', 'id':"login-username"}),
+			'password' : forms.PasswordInput({'id':"login-password"}),
+		}
