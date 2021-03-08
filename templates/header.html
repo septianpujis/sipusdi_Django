@@ -7,28 +7,21 @@
         <a href="#" class="navbar-brand">
           <div class="brand-text d-none d-md-inline-block"><span>Sistem </span><strong class="text-primary">Perpustakaan</strong></div></a>
       </div>
-        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
-          <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><i class="fa fa-envelope"></i><span class="badge badge-info">10</span></a>
+        <ul class="nav-menu list-unstyled d-flex flex-sm-row align-items-sm-left">
+          <li class="nav-item dropdown"> <a id="messages" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link"><strong>{{request.session.nama}}</strong> <i class="fa fa-user fa-lg"></i> <i class="fa fa-caret-down"></i></a>
             <ul aria-labelledby="notifications" class="dropdown-menu">
               <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                  <div class="msg-profile"> <img src="{% static 'img/avatar-1.jpg'%}" alt="..." class="img-fluid rounded-circle"></div>
+                  <div class="msg-profile"> <i class="fa fa-user fa-4x"> </i></div>
                   <div class="msg-body">
-                    <h3 class="h5">Jason Doe</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
+                    <h3 class="h5">{{request.session.nama}}</h3><span>{{request.session.email}}</span><small>{{request.session.no_telp}}</small>
                   </div></a></li>
-              <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                  <div class="msg-profile"> <img src="{% static 'img/avatar-2.jpg'%}" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="msg-body">
-                    <h3 class="h5">Frank Williams</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                  </div></a></li>
-              <li><a rel="nofollow" href="#" class="dropdown-item d-flex"> 
-                  <div class="msg-profile"> <img src="{% static 'img/avatar-3.jpg'%}" alt="..." class="img-fluid rounded-circle"></div>
-                  <div class="msg-body">
-                    <h3 class="h5">Ashley Wood</h3><span>sent you a direct message</span><small>3 days ago at 7:58 pm - 10.06.2014</small>
-                  </div></a></li>
-              <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-envelope"></i>Read all messages    </strong></a></li>
+              <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-book"></i>Pinjam Buku</strong></a></li>
+              <li><a rel="nofollow" href="#" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-file-text-o"></i>Lihat Peminjaman</strong></a></li>
+              <li><a rel="nofollow" href="{%url 'logout'%}" class="dropdown-item all-notifications text-center"> <strong> <i class="fa fa-sign-out"></i>Logout</strong></a></li>
+
             </ul>
           </li>
-          <li class="nav-item"><a href="{%url 'logout'%}" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+          
         </ul>
       </div>
   </nav>

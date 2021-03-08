@@ -2,8 +2,9 @@
 <nav class="side-navbar">
   <div class="side-navbar-wrapper">
     <div class="sidenav-header d-flex align-items-center justify-content-center">
-      <div class="sidenav-header-inner text-center"><img src="{%static 'img/logo.png'%}" alt="logo utama" class="img-fluid rounded-circle">
-        <h2 class="h5 text-uppercase">Sistem</h2><strong class="text-uppercase">Perpustakaan</strong>
+      <div class="sidenav-header-inner text-center">
+        <img src="{%static 'img/logo.png'%}" alt="logo utama" class="img-fluid rounded-circle">
+        <h2 class="h5 text-uppercase">Sistem</h2><strong  class="text-primary text-uppercase">Perpustakaan</strong>
       </div>
       <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center"> <strong>S</strong><strong class="text-primary">P</strong></a></div>
     </div>
@@ -20,8 +21,8 @@
                 <li> <a href="{%url 'laporanTrans'%}">Laporan Transaksi</a></li>
               </ul>
             </li>
-        <li> <a href="#"> <i class="icon-mail"></i><span>Tentang Kami</span></a></li>
-        <li> <a href="#"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
+        {# <li> <a href="#"> <i class="icon-mail"></i><span>Tentang Kami</span></a></li> #}
+        <li> <a href="{%url 'logout'%}"> <i class="fa fa-sign-out"></i><span>Logout</span></a></li>
       </ul>
     </div>
   </div>
