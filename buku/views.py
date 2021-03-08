@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from buku.models import *
 from buku.form import FormBuku
 from django.conf import settings
 from django.contrib import messages
+from buku.resource import Resource
 
 # Create your views here.
 
@@ -84,4 +86,20 @@ def hapus(request, id_buku):
 			return redirect('tampilBuku')
 		else:
 			messages.warning(request, 'Gagal menghapus data, Bukan Admin')
+			return redirect('tampilBuku')
+
+def laporan(request):
+	try:
+		request.session['nis']
+	except KeyError:
+		return redirect('login')
+	else:
+		if request.session['level']==1:
+			data = Resource()
+			dataset = data.export()
+			response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+			response['Content-Disposition'] = 'attachment; filename=Laporan-Buku.xls'
+			return response
+		else:
+			messages.warning(request, 'Gagal Mengeksport data, Bukan Admin')
 			return redirect('tampilBuku')

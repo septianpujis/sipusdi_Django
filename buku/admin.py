@@ -4,7 +4,7 @@ from buku.models import *
 # Register your models here.
 
 class BukuAdmin(admin.ModelAdmin):
-	list_display = ['cover', 'id','judul','penulis','penerbit','tahun']
+	list_display = ['cover', 'id','judul','penulis','penerbit','tahun','genre']
 	search_fields = ['judul','penulis','penerbit']
 	#list_filter = ('kelompok_id',)
 

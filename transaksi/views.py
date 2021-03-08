@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from transaksi.models import *
 from transaksi.form import FormTrans
 from django.conf import settings
 from django.contrib import messages
+from transaksi.resource import Resource
 
 # Create your views here.
 
@@ -80,4 +82,21 @@ def hapus(request, id_trans):
 			return redirect('tampilTrans')
 		else:
 			messages.warning(request, 'Gagal menghapus data, Bukan Admin')
-			return redirect('tampilBuku')
+			return redirect('tampilTrans')
+
+
+def laporan(request):
+	try:
+		request.session['nis']
+	except KeyError:
+		return redirect('login')
+	else:
+		if request.session['level']==1:
+			data = Resource()
+			dataset = data.export()
+			response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+			response['Content-Disposition'] = 'attachment; filename=Laporan-Transaksi.xls'
+			return response
+		else:
+			messages.warning(request, 'Gagal Mengeksport data, Bukan Admin')
+			return redirect('tampilTrans')

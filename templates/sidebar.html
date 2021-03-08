@@ -15,9 +15,9 @@
         <li {% if request.path == "/transaksi/"%} class="active" {%endif%} > <a href="{%url 'tampilTrans'%}"> <i class="fa fa-file-text-o"> </i><span>Transaksi</span></a></li>
         <li> <a href="#pages-nav-list" data-toggle="collapse" aria-expanded="false"><i class="icon-interface-windows"></i><span>Laporan</span><div class="arrow pull-right"><i class="fa fa-angle-down"></i></div></a>
               <ul id="pages-nav-list" class="collapse list-unstyled">
-                <li> <a href="#">Laporan Buku</a></li>
-                <li> <a href="#">laporan Pengguna</a></li>
-                <li> <a href="#">Laporan Transaksi</a></li>
+                <li> <a href="{%url 'laporanBuku'%}">Laporan Buku</a></li>
+                <li> <a href="{%url 'laporanUser'%}">laporan Pengguna</a></li>
+                <li> <a href="{%url 'laporanTrans'%}">Laporan Transaksi</a></li>
               </ul>
             </li>
         <li> <a href="#"> <i class="icon-mail"></i><span>Tentang Kami</span></a></li>

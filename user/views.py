@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from user.models import *
 from user.form import FormUser
 from django.conf import settings
 from django.contrib import messages
+from user.resource import Resource
 # Create your views here.
 
 def index(request):
@@ -85,4 +87,21 @@ def hapus(request, id_user):
 			return redirect('tampilUser')
 		else:
 			messages.warning(request, 'Gagal menghapus data, Bukan Admin')
+			return redirect('tampilUser')
+
+
+def laporan(request):
+	try:
+		request.session['nis']
+	except KeyError:
+		return redirect('login')
+	else:
+		if request.session['level']==1:
+			data = Resource()
+			dataset = data.export()
+			response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+			response['Content-Disposition'] = 'attachment; filename=Laporan-User.xls'
+			return response
+		else:
+			messages.warning(request, 'Gagal Mengeksport data, Bukan Admin')
 			return redirect('tampilUser')

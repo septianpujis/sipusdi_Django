@@ -33,16 +33,20 @@ urlpatterns = [
     path('buku/tambah/', buku.tambah, name='tambahBuku' ),
     path('buku/edit/<int:id_buku>', buku.edit, name='editBuku' ),
     path('buku/hapus/<int:id_buku>', buku.hapus, name='hapusBuku' ),
+    path('buku/laporan', buku.laporan , name='laporanBuku' ),
 
     path('user/', user.index, name='tampilUser' ),
     path('user/tambah/', user.tambah, name='tambahUser' ),
     path('user/edit/<int:id_user>', user.edit, name='editUser' ),
     path('user/hapus/<int:id_user>', user.hapus, name='hapusUser' ),
+    path('user/laporan', user.laporan , name='laporanUser' ),
 
     path('transaksi/', transaksi.index, name='tampilTrans' ),
     path('transaksi/tambah/', transaksi.tambah, name='tambahTrans' ),
     path('transaksi/edit/<int:id_trans>', transaksi.edit, name='editTrans' ),
     path('transaksi/hapus/<int:id_trans>', transaksi.hapus, name='hapusTrans' ),
+    path('transaksi/laporan', transaksi.laporan , name='laporanTrans' ),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
