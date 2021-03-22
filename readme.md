@@ -13,4 +13,4 @@ Fitur:<br><ul>
 </ul>
 
 
-Diagram Database, Diagram Usecase, dan Aturan dasar terlampir pada dokumen berikut: https://drive.google.com/file/d/1Ey8QAtyW8tY1oTFtRetkMIVGYd6Z4J1R/view?usp=sharing
+Diagram Database, Diagram Usecase, dan Aturan dasar terlampir pada dokumen berikut: bit.ly/SipusdiRequirement
