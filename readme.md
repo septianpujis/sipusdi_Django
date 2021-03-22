@@ -13,4 +13,21 @@ Fitur:<br><ul>
 </ul>
 
 
-Diagram Database, Diagram Usecase, dan Aturan dasar terlampir pada dokumen berikut: bit.ly/SipusdiRequirement
+Diagram Database, Diagram Usecase, dan Aturan dasar terlampir pada dokumen berikut: <a href="bit.ly/SipusdiRequirement">Dokumen Requirement</a>
+
+<hr>
+
+# SiPusDi - Digital Library Website
+
+Programming practice -- make website with Django 2.2 Framework (Python)
+
+Digital Library Website have feature:<br><ul>
+  <li>Login System</li>
+  <li>User Level System (admin & user) </li>
+  <li>User can view book list dan borrow a book</li>
+  <li>User can view and edit user profil</li>
+  <li>Admin can do CRUD on book data, User data, and Transaction data</li>
+  <li>Search data (User by name, Book by title, and Transaction by date</li>
+</ul>
+
+Database Diagram, Usecase diagram, description and basic rules i put on this <a href="bit.ly/SipusdiRequirement">requirement document</a> (in bahasa Indonesia)
