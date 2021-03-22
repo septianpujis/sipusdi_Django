@@ -14,8 +14,13 @@ def index(request):
 	except KeyError:
 		return redirect('login')
 	else:
+		if request.GET:
+			data_trans = Transaksi.objects.filter(tanggal_pinjam=request.GET.get('query', ''))
+		else:
+			data_trans = Transaksi.objects.all()
+
 		var ={
-			'trans' : Transaksi.objects.all(),
+			'trans' : data_trans,
 			'judul' : "Data Peminjaman",
 		}
 		return render(request, 'tampilTrans.html', var)

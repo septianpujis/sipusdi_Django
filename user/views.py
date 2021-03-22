@@ -13,7 +13,11 @@ def index(request):
 	except KeyError:
 		return redirect('login')
 	else:
-		data_user = User.objects.all()
+		if request.GET:
+			data_user = User.objects.filter(nama__icontains=request.GET.get('query', ''))
+		else:
+			data_user = User.objects.all()
+		
 		var ={
 			'user' : data_user,
 			'judul' : "Data Pengguna",

@@ -14,8 +14,11 @@ def index(request):
 	except KeyError:
 		return redirect('login')
 	else:
-		data_buku = Buku.objects.all()
-		
+		if request.GET:
+			data_buku = Buku.objects.filter(judul__icontains=request.GET.get('query', ''))
+		else:
+			data_buku = Buku.objects.all()
+
 		var ={
 			'buku' : data_buku,
 			'judul' : "Data Buku",
