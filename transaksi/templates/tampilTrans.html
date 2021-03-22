@@ -32,6 +32,9 @@
           </div>
         </div>
         <div class="card-body">
+          {%if not trans %}
+          <h1>Tidak ada data peminjaman</h1>
+          {%else%}
           <table class="table table-striped table-hover">
             <thead>
               <tr>
@@ -40,7 +43,9 @@
                 <th width="20%">Peminjam</th>
                 <th width="20%">Judul Buku</th>
                 <th width="15%">Status</th>
+                {% if request.session.level == 1 %}
                 <th width="15%">Aksi</th>
+                {% endif %}
               </tr>
             </thead>
             {%for row in trans%}
@@ -49,21 +54,20 @@
                 <td scope="row">{{row.id}}</td>
                 <td>{{row.tanggal_pinjam}}</td>
                 <td>
-                  {{row.peminjam}}
+                  <a href="{%url 'tampilUser' %}?query={{row.peminjam}}">{{row.peminjam}}</a>
                 </td>
                 <td>
-                  {{row.buku}}
+                  <a href="{%url 'tampilBuku' %}?query={{row.buku}}">{{row.buku}}</a>
                 </td>
                 <td>{{row.status}}</td>
+                {%if request.session.level == 1%}
                 <td>
-                  <button type="button" data-toggle="modal" data-target="#detail-{{row.id}}" class="btn btn-primary"><i class="fa fa-info"></i></button>
-                  {%if request.session.level == 1%}
                   <a href="{%url 'editTrans' row.id%}" class="btn btn-success"><i class="fa fa-edit"></i></a>
                   <button type="button" data-toggle="modal" data-target="#hapus-{{row.id}}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                  {%endif%}
-                  <!-- Modal Hapus -->
                 </td>
+                {%endif%}
               </tr>
+              <!-- Modal Hapus -->
               <div id="hapus-{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
                 <div role="document" class="modal-dialog">
                   <div class="modal-content">
@@ -81,23 +85,10 @@
                   </div>
                 </div>
               </div>
-              <!-- Modal lihat -->
-              <div id="detail-{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" class="modal fade text-left" style="display: none;" aria-hidden="true">
-                <div role="document" class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 id="exampleModalLabel" class="modal-title">Data Transaksi</h5>
-                      <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Data Detail Dari data yang dipilih</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </tbody>
             {%endfor%}
           </table>
+          {%endif%}
         </div>
       </div>
     </div>

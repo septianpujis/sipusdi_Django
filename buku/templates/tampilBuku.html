@@ -98,7 +98,13 @@
                           <strong>Genre :</strong><br><span>{{row.genre}}</span><br>
                           <strong>Sinopsis :</strong><br><span>{{row.sinopsis}}</span><br>
                         </div>
-                        <div class="col-5"><p align="center"><img src="#" alt="Gambar Cover tidak ditemukan" width="240" height="360"></p></div>
+                        <div class="col-5">
+                          <p align="center">
+                            {%if row.cover%}
+                            <img src="{{row.cover.url}}" alt="Gambar Cover tidak ditemukan" width="260" height="360">
+                            {%endif%}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
