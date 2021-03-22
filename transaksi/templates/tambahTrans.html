@@ -17,6 +17,29 @@
             {%csrf_token%}
             <table class="table">
               {{form.as_table}}
+               <!-- <tr>
+                <td>Tanggal Peminjaman</td>
+                <td>
+                  {{form.tanggal_pinjam}}
+                  <input type="text" name="tanggal_kembali" value="" hidden="" >
+                </td>
+              </tr>
+              <tr>
+                <td>Peminjam</td>
+                {%if request.session.level == 1%}
+                <td>{{form.peminjam}}</td>
+                {%else%}
+                <td>
+                  <input type="text" readonly="" value="{{request.session.id}}" name="peminjam" hidden="">
+                  <input class="form-control" type="text" readonly="" value="{{request.session.nama}}">
+                  <input type="text" name="status" value="1" hidden="" >
+                </td>
+                {%endif%}
+              </tr>
+               <tr>
+                <td>Buku</td>
+                <td>{{form.buku}}</td>
+              </tr> -->
             </table>
           </form>
         </div>
