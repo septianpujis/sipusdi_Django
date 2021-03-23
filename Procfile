@@ -1,0 +1,1 @@
+web: gunicorn dipusdi.wsgi --log-file -
