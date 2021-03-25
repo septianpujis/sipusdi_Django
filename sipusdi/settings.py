@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'buku',
     'user',
     'transaksi',
+    'rest_framework',
+    'apis.apps.ApisConfig',
+    
 ]
 
 MIDDLEWARE = [

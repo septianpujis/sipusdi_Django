@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from sipusdi import views as base
 from buku import views as buku
 from user import views as user
@@ -46,6 +46,8 @@ urlpatterns = [
     path('transaksi/edit/<int:id_trans>', transaksi.edit, name='editTrans' ),
     path('transaksi/hapus/<int:id_trans>', transaksi.hapus, name='hapusTrans' ),
     path('transaksi/laporan', transaksi.laporan , name='laporanTrans' ),
+
+    path('api/', include('apis.urls'), name='api'),
 
 ]
 if settings.DEBUG:
