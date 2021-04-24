@@ -1,5 +1,7 @@
 # SiPusDi - Sistem Perpustakaan Digital
 
+<img src="https://i.imgur.com/WWYIxj7.gif">
+
 Latihan Pemrograman Python untuk pembuatan Website Sistem Perpustakaan dengan Framework Django 2.2
 
 Fitur:<br><ul>
