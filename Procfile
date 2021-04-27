@@ -1,1 +1,1 @@
-web: gunicorn sipusdi.wsgi
+web: gunicorn sipusdi.wsgi --log-file -

@@ -10,7 +10,7 @@ class BukuSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
-		fields = '__all__'
+		fields = ['id','nama','email', 'no_telp']
 		model = models.User
 
 class TransSerializer(serializers.ModelSerializer):
